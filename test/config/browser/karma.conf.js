@@ -5,24 +5,24 @@ module.exports = function (config) {
     browsers: [ 'PhantomJS' ],
 
     files: [
-      './../../../node_modules/phantomjs-polyfill/bind-polyfill.js',
-      './tests.bundle.js'
+        './../../../node_modules/phantomjs-polyfill/bind-polyfill.js',
+        './tests.bundle.js'
     ],
 
     frameworks: [ 'chai', 'mocha' ],
 
     plugins: [
-      'karma-phantomjs-launcher',
-      'karma-chai',
-      'karma-mocha',
-      'karma-sourcemap-loader',
-      'karma-webpack',
-      'karma-osx-reporter'
+        'karma-phantomjs-launcher',
+        'karma-chai',
+        'karma-mocha',
+        'karma-sourcemap-loader',
+        'karma-osx-reporter',
+        'karma-webpack'
     ],
 
     // run the bundle through the webpack and sourcemap plugins
     preprocessors: {
-      './tests.bundle.js': [ 'webpack', 'sourcemap' ]
+        './tests.bundle.js': [ 'webpack', 'sourcemap' ]
     },
 
     reporters: [ 'dots', 'osx' ],
@@ -31,20 +31,25 @@ module.exports = function (config) {
 
     // webpack config object
     webpack: {
-      devtool: 'inline-source-map',
-      module: {
-        loaders: [
-          {
-            exclude: /node_modules/,
-            loader: 'babel',
-            test: /\.js?$/
-          }
-        ],
-      },
-      plugins: [
-        new webpack.IgnorePlugin(/\.json$/),
-        new webpack.NoErrorsPlugin()
-      ]
+        devtool: 'inline-source-map',
+        module: {
+            loaders: [
+                {
+                    exclude: /node_modules/,
+                    loader: 'babel',
+                    test: /\.js?$/
+                }
+            ],
+        },
+        plugins: [
+            new webpack.IgnorePlugin(/\.json$/),
+            new webpack.NoErrorsPlugin()
+        ]
+    },
+
+    webpackMiddleware: {
+        noInfo: true
     }
+
   });
 };

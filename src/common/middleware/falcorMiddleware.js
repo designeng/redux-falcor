@@ -24,6 +24,7 @@ export default function falcorMiddleware() {
                     return false;
                 } else {
                     console.log("contacts:::::::::::::::::", contacts);
+                    callback();
                     return contacts;
                 }
 
