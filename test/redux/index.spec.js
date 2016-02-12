@@ -45,7 +45,7 @@ describe('root reducer store',  () => {
     });
 
     it('should have contacts field',  (done) => {
-        ContactsActions.contactsGet(done);
+        ContactsActions.contactsGet();
         const state = store.getState();
 
         expect(state.contacts).to.be.ok;
@@ -53,12 +53,13 @@ describe('root reducer store',  () => {
 
         console.log("state.contacts", state.contacts);
 
-        // setTimeout(() => {
-        //     done();
-        // }, 1000);
-
-        done();
+        // TODO
+        store.dispatch(ContactsActions.contactsGet());
         
+        setTimeout(() => {
+            done();
+        }, 300);
+
     });
 
 });
