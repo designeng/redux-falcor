@@ -33,5 +33,8 @@ export default function falcorMiddleware() {
                 next({...rest, contacts, type: SUCCESS});
                 return true;
             })
+            .catch(error => {
+                console.log("contacts::ERROR::", error[0].path, error[0].value);
+            })
     };
 }
