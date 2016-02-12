@@ -8,6 +8,7 @@ import thunkMiddleware     from "redux-thunk";
 import falcorMiddleware    from "./../../src/common/middleware/falcorMiddleware";
 
 import rootReducer from './../../src/common/reducers';
+import * as ContactsActions from './../../src/common/actions/contacts';
 
 chai.use(spies);
 
@@ -41,6 +42,21 @@ describe('root reducer store',  () => {
         expect(store.dispatch).to.be.ok;
         expect(store.subscribe).to.be.ok;
         done();
+    });
+
+    it('should have contacts field',  (done) => {
+        ContactsActions.contactsGet();
+        const state = store.getState();
+
+        expect(state.contacts).to.be.ok;
+        expect(state.contacts).to.be.object;
+
+        console.log("state.contacts", state.contacts);
+
+        setTimeout(() => {
+            done();
+        }, 1000);
+        
     });
 
 });

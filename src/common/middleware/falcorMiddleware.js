@@ -1,6 +1,8 @@
 export default function falcorMiddleware() {
     return next => action => {
 
+        console.log("falcorMiddleware.........");
+
         /* destructuring action object to local variables*/
         const { promise, isFalcorRequest, type, ...rest } = action;
 
@@ -21,7 +23,7 @@ export default function falcorMiddleware() {
                     next({...rest, error, type: FAILURE});
                     return false;
                 } else {
-                    console.log("contacts:::", contacts);
+                    console.log("contacts:::::::::::::::::", contacts);
                     return contacts;
                 }
 

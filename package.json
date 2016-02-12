@@ -5,7 +5,7 @@
   "scripts": {
     "slate": "rimraf -rf node_modules && npm install",
     "clean": "rimraf -rf dist",
-    "build": "npm run clean&&set NODE_ENV=production&&webpack -p --progress --colors --profile",
+    "build": "npm run clean&&set NODE_ENV=production && webpack -p --progress --colors --profile",
     "karma-browser": "karma start test/config/browser/karma.conf.js",
     "test": "node ./runner & npm run karma-browser",
     "start": "node ./runner"

@@ -6,6 +6,7 @@ export const CONTACTS_GET_SUCCESS = 'CONTACTS_GET_SUCCESS';
 export const CONTACTS_GET_FAILURE = 'CONTACTS_GET_FAILURE';
 
 export function contactsGet() {
+    console.log("contactsGet invoked!!!!");
     return {
         type: CONTACTS_GET,
         promise: contactsModel.getValue(['contacts']),
