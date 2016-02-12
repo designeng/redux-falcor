@@ -5,6 +5,8 @@ import when from 'when';
 import wire                 from 'essential-wire';
 import wireDebugPlugin      from 'essential-wire/source/debug';
 
+import rootReducer from './../../src/common/reducers';
+
 chai.use(spies);
 
 const getUserPlugin = (options) => {
