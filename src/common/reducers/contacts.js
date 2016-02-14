@@ -12,7 +12,6 @@ export default function contacts(state = {}, action) {
     switch (action.type) {
 
         case CONTACTS_GET_SUCCESS: {
-            console.log("CONTACTS_GET_SUCCESS.......");
             return Object.assign({}, state, {contacts: action.contacts});
         }
 

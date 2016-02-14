@@ -7,11 +7,8 @@ import {
 
 export default function falcorMiddleware() {
     return next => action => {
-
-        /* destructuring action object to local variables*/
         const { promise, isFalcorRequest, type, ...rest } = action;
 
-        /* filter out all requests, that is not a Firebase promise */
         if (!promise && !isFalcorRequest) return next(action);
 
         console.log("falcorMiddleware run....");
@@ -24,7 +21,13 @@ export default function falcorMiddleware() {
                 } else {
                     console.log("contacts:::::::::::::::::", contacts);
 
-                    next({...rest, contacts, type: CONTACTS_GET_SUCCESS});
+                    const _action = {
+                        ...rest, 
+                        contacts,
+                        type: CONTACTS_GET_SUCCESS
+                    }
+
+                    next(_action);
                 }
             })
             .catch(error => {
