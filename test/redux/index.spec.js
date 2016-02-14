@@ -51,7 +51,7 @@ describe('root reducer store',  () => {
         expect(state.contacts).to.be.ok;
         expect(state.contacts).to.be.object;
 
-        console.log("state.contacts", state.contacts);
+        console.log("state.contacts:", state.contacts);
 
         // TODO
         store.dispatch(ContactsActions.contactsGet());

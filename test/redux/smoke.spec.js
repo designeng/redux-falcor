@@ -19,7 +19,7 @@ describe('smoke test',  () => {
             result = res;
             done();
         }).catch(error => {
-            console.log("error:::::", error[0].path, error[0].value);
+            console.log("error:::", error[0].path, error[0].value);
             done();
         })
     }

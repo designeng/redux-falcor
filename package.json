@@ -7,7 +7,7 @@
     "clean": "rimraf -rf dist",
     "build": "npm run clean&&set NODE_ENV=production && webpack -p --progress --colors --profile",
     "karma-browser": "karma start test/config/browser/karma.conf.js",
-    "test": "node ./runner & npm run karma-browser",
+    "test": "node ./before-run & node ./runner & npm run karma-browser",
     "start": "node ./runner"
   },
   "repository": {

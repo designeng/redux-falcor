@@ -1,12 +1,12 @@
-var express = require('express');
-var app = express();
-
-var FalcorServer = require('falcor-express');
+import express from 'express';
+import FalcorServer from 'falcor-express';
 
 /* ---- import falcor routers ---- */
 import NavigationRouter from './api/falcor/routers/navigation';
 import ContactsRouter   from './api/falcor/routers/contacts';
 import MessagesRouter   from './api/falcor/routers/messages';
+
+var app = express();
 
 /* ---- falcor models API ---- */
 app.use('/navigation/model.json',   FalcorServer.dataSourceRoute(() => new NavigationRouter()));
