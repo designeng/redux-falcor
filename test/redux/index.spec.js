@@ -23,7 +23,6 @@ const storeBuilder = (initialState) => finalCreateStore(rootReducer, initialStat
 describe('root reducer store',  () => {
 
     let store = {};
-    let finalCreateStore;
 
     const sendRequestPromise = when.promise((resolve, reject) => {
         setTimeout(() => {
@@ -45,21 +44,30 @@ describe('root reducer store',  () => {
     });
 
     it('should have contacts field',  (done) => {
+        let state;
+
         ContactsActions.contactsGet();
-        const state = store.getState();
+        state = store.getState();
 
         expect(state.contacts).to.be.ok;
         expect(state.contacts).to.be.object;
+        done();
+    });
 
-        console.log("state.contacts:", state.contacts);
+    it('should have contacts with length 2',  (done) => {
+        const prevState = store.getState();
+        console.log("prevState >>>>>>", prevState);
 
-        // TODO
-        store.dispatch(ContactsActions.contactsGet());
-        
-        setTimeout(() => {
+        when(store.dispatch(ContactsActions.contactsGet())).then(() => {
+            const lastState = store.getState();
+            console.log("lastState >>>>>>", lastState);
+
+            expect(lastState.contacts).to.be.ok;
+            
+            // expect(lastState.contacts.length).to.equial(2);
+
             done();
-        }, 300);
-
+        });
     });
 
 });
