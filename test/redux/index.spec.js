@@ -54,7 +54,7 @@ describe('root reducer store',  () => {
         done();
     });
 
-    it('should have contacts with length 2',  (done) => {
+    it('should have contacts list with length 2',  (done) => {
         when(store.dispatch(ContactsActions.contactsGet())).then(() => {
             expect(store.getState().contacts.list.length).to.equal(2);
             done();
