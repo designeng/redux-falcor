@@ -7,8 +7,6 @@ import {
 
 export default function contacts(state = {}, action) {
 
-    console.log("ACTION IN REDUCER::::", action);
-
     switch (action.type) {
 
         case CONTACTS_GET_SUCCESS: {
