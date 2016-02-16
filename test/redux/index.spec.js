@@ -55,17 +55,8 @@ describe('root reducer store',  () => {
     });
 
     it('should have contacts with length 2',  (done) => {
-        const prevState = store.getState();
-        console.log("prevState >>>>>>", prevState);
-
         when(store.dispatch(ContactsActions.contactsGet())).then(() => {
-            const lastState = store.getState();
-            console.log("lastState >>>>>>", lastState);
-
-            expect(lastState.contacts).to.be.ok;
-            
-            // expect(lastState.contacts.length).to.equial(2);
-
+            expect(store.getState().contacts.list.length).to.equal(2);
             done();
         });
     });

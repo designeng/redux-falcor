@@ -11,23 +11,17 @@ export default function falcorMiddleware() {
 
         if (!promise && !isFalcorRequest) return next(action);
 
-        console.log("falcorMiddleware run....");
-
         return promise
-            .then(contacts => {
-                if (contacts === null) {
+            .then(list => {
+                if (list === null) {
                     var error = new Error('No data.');
                     next({...rest, error, type: CONTACTS_GET_FAILURE});
                 } else {
-                    console.log("contacts:::::::::::::::::", contacts);
-
-                    const _action = {
+                    next({
                         ...rest, 
-                        contacts,
+                        list,
                         type: CONTACTS_GET_SUCCESS
-                    }
-
-                    next(_action);
+                    });
                 }
             })
             .catch(error => {
